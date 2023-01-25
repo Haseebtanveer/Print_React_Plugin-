@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "Print Job",
+  "version": "1.0",
+  "description": "A simple extension example.",
+  "icons": {
+    "128": "./src/M.png"
+  },
+  "app": {
+    "urls": ["http://localhost:3001"],
+    "launch": {
+      "web_url": "http://localhost:3001"
+    }
+  }
+}

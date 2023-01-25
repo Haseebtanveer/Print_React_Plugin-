@@ -1,22 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React from "react";
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+// import FileUpload from "./components/FileUpload";
+import PrintJobNotification from "./components/PrintJobNotification";
+// import logo from "./logo.svg";
+import "./App.css";
+import { chrome } from "chrome-extension-async";
 function App() {
+  function test() {
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+      const activeTabId = tabs[0].id;
+      chrome.scripting.executeScript({
+        traget: { tabId: activeTabId },
+        function: () => {
+          document.body.innerHTML = "Hello World";
+        },
+      });
+    });
+  }
+  console.log(test);
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        {/*   <FileUpload /> */}
+        <PrintJobNotification />
       </header>
     </div>
   );
